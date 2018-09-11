@@ -7,7 +7,7 @@ using Serilog;
 
 namespace Template.WebAPI
 {
-    public class Program
+    class Program
     {
         public static IConfiguration Configuration { get; } = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
