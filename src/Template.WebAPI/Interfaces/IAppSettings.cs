@@ -12,5 +12,7 @@ namespace Template.WebAPI.Interfaces
         string ConnectorUrl { get; }
         string ConnectorClientId { get; }
         string ConnectorUserKey { get; }
+
+        void Validate();
     }
 }

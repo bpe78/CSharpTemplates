@@ -48,5 +48,24 @@ namespace Template.WebAPI
         public string ConnectorUrl => _configuration.GetValue<string>("connector:Url") ?? throw new InvalidOperationException("connector url is missing");
         public string ConnectorClientId => "ABCDEFGHIJKLMNOPQRSTUVXYZ-1234567890";
         public string ConnectorUserKey => _configuration.GetValue<string>("connector:userKey") ?? throw new InvalidOperationException("UserKey is missing");
+
+        /// <summary>
+        /// This method should be called at startup, to validate all settings in a meaningful way
+        /// </summary>
+        public void Validate()
+        {
+            if (string.IsNullOrWhiteSpace(ServiceName))
+                throw new ApplicationException("Invalid value for [ServiceName]");
+            if(string.IsNullOrWhiteSpace(RedisServer))
+                throw new ApplicationException("Invalid value for [RedisServer]");
+            if ((RedisDbIndex < 0) || (RedisDbIndex > 15))
+                throw new ApplicationException("Invalid value for [RedisDbIndex]");
+            if (string.IsNullOrWhiteSpace(ConnectorUrl))
+                throw new ApplicationException("Invalid value for [ConnectorUrl]");
+            if (string.IsNullOrWhiteSpace(ConnectorClientId))
+                throw new ApplicationException("Invalid value for [ConnectorClientId]");
+            if (string.IsNullOrWhiteSpace(ConnectorUserKey))
+                throw new ApplicationException("Invalid value for [ConnectorUserKey]");
+        }
     }
 }
