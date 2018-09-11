@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Template.WebAPI.Interfaces;
 
 namespace Template.WebAPI.Controllers
 {
@@ -10,6 +11,13 @@ namespace Template.WebAPI.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly IAppSettings _settings;
+
+        public ValuesController(IAppSettings settings)
+        {
+            _settings = settings ?? throw new ArgumentNullException(nameof(settings));
+        }
+
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
