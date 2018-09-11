@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 using Template.WebAPI.Interfaces;
 
 namespace Template.WebAPI.Controllers
@@ -20,6 +21,9 @@ namespace Template.WebAPI.Controllers
 
         // GET api/values
         [HttpGet]
+        [SwaggerOperation("GetValues")]
+        [SwaggerResponse((int)System.Net.HttpStatusCode.OK)]
+        [SwaggerResponse((int)System.Net.HttpStatusCode.NotFound)]
         public ActionResult<IEnumerable<string>> Get()
         {
             return new string[] { "value1", "value2" };
@@ -27,6 +31,9 @@ namespace Template.WebAPI.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
+        [SwaggerOperation("GetValue")]
+        [SwaggerResponse((int)System.Net.HttpStatusCode.OK)]
+        [SwaggerResponse((int)System.Net.HttpStatusCode.NotFound)]
         public ActionResult<string> Get(int id)
         {
             return "value";

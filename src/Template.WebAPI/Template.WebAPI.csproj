@@ -18,6 +18,8 @@
         <PackageReference Include="Serilog.Settings.Configuration" Version="2.6.1" />
         <PackageReference Include="Serilog.Sinks.File" Version="4.0.0" />
         <PackageReference Include="Serilog.Sinks.Seq" Version="4.0.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="3.0.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="3.0.0" />
     </ItemGroup>
 
     <ItemGroup>
