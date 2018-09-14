@@ -3,6 +3,7 @@ using System.IO;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Autofac.Extensions.DependencyInjection;
 using Serilog;
 
 namespace Template.WebAPI
@@ -30,6 +31,7 @@ namespace Template.WebAPI
                     .CreateDefaultBuilder(args)
                     .UseConfiguration(Configuration)
                     .UseStartup<Startup>()
+                    .ConfigureServices(services => services.AddAutofac())
                     .UseSerilog()
                     .Build()
                     .Run();

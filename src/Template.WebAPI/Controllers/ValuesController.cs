@@ -13,10 +13,12 @@ namespace Template.WebAPI.Controllers
     public class ValuesController : ControllerBase
     {
         private readonly IAppSettings _settings;
+        private readonly Serilog.ILogger _logger;
 
-        public ValuesController(IAppSettings settings)
+        public ValuesController(IAppSettings settings, Serilog.ILogger logger)
         {
             _settings = settings ?? throw new ArgumentNullException(nameof(settings));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         // GET api/values
