@@ -27,7 +27,6 @@ namespace Template.WebAPI
                 c.SwaggerDoc("v1", new Info { Title = "Test API", Version = "v1" });
                 // https://github.com/domaindrivendev/Swashbuckle.AspNetCore#add-security-definitions-and-requirements
             });
-            services.AddSingleton<IAppSettings, AppSettings>();
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
