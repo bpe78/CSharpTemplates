@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
 using Template.WebAPI.Interfaces;
 
@@ -39,6 +34,7 @@ namespace Template.WebAPI
         {
             builder.RegisterInstance(Serilog.Log.Logger);
             builder.RegisterType<AppSettings>().As<IAppSettings>().SingleInstance().OnActivated(e => e.Instance.Validate());
+            builder.RegisterInstance(MappingConfiguration.Create());
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
