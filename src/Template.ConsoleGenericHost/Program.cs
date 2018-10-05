@@ -33,7 +33,9 @@ namespace Template.ConsoleGenericHost
                            .ConfigureContainer<ContainerBuilder>(builder =>
                            {
                                builder.RegisterLogger();
+                               // You can add multiple IHostedServices and they all start
                                builder.RegisterType<LifetimeEventsHostedService>().As<IHostedService>().SingleInstance();
+                               builder.RegisterType<TimedHostedService>().As<IHostedService>().SingleInstance();
                            })
                            .ConfigureServices((hostContext, services) =>
                            {
